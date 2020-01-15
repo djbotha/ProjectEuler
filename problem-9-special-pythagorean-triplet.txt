@@ -1,0 +1,16 @@
+function isPythTriplet(a, b, c) {
+    return Math.pow(a, 2) + Math.pow(b, 2) === Math.pow(c, 2);
+}
+
+function specialPythagoreanTriplet(n) {
+    for (let a = 1; a < n; a++) {
+        for (let b = a; b < n; b++) {
+            let c = n - a - b; 
+            if (c > 0 && isPythTriplet(a, b, c)) {
+                return a * b * c
+            }
+        }
+    }
+}
+
+specialPythagoreanTriplet(1000);

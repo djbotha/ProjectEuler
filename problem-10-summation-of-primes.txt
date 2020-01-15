@@ -1,0 +1,29 @@
+function primesBelow(n) {
+  const primes = [2];
+  let next = 3;
+
+  while (next < n) {
+    let isPrime = true;
+    let max = Math.ceil(Math.sqrt(next));
+
+    for (let i = 0; primes[i] <= max; i++) {
+      if (next % primes[i] === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+
+    if (isPrime) {
+      primes.push(next);
+    }
+
+    next += 2;
+  }
+  return primes
+}
+
+function primeSummation(n) {
+  return primesBelow(n).reduce((acc, curr) => acc += curr, 0);
+}
+
+primeSummation(2000000);

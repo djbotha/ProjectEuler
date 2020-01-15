@@ -1,0 +1,25 @@
+function nthPrime(n) {
+  const primes = [2];
+  let next = 3;
+
+  while (primes.length < n) {
+    let isPrime = true;
+    let max = Math.ceil(Math.sqrt(next));
+
+    for (let i = 0; primes[i] <= max; i++) {
+      if (next % primes[i] === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+
+    if (isPrime) {
+      primes.push(next);
+    }
+
+    next += 2;
+  }
+  return primes[primes.length - 1]
+}
+
+nthPrime(10001);
